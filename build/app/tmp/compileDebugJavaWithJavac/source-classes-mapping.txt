@@ -1,0 +1,4 @@
+io/flutter/plugins/GeneratedPluginRegistrant.java
+ io.flutter.plugins.GeneratedPluginRegistrant
+com/example/freshcode_loyalty_t3/BuildConfig.java
+ com.example.freshcode_loyalty_t3.BuildConfig

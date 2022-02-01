@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="default_web_client_id" translatable="false">75775866627-833a8m9euerh4pc7n7aj1ffb3o945ph1.apps.googleusercontent.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">75775866627</string>
+    <string name="google_api_key" translatable="false">AIzaSyB7-X4CPlXuMdYFstWqmpsUgq6IPSiPQZ0</string>
+    <string name="google_app_id" translatable="false">1:75775866627:android:843ab923214df21d615b36</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyB7-X4CPlXuMdYFstWqmpsUgq6IPSiPQZ0</string>
+    <string name="google_storage_bucket" translatable="false">freshcode-loyalty.appspot.com</string>
+    <string name="project_id" translatable="false">freshcode-loyalty</string>
+</resources>
