@@ -18,7 +18,7 @@ class PhoneConfirmationPage extends StatelessWidget {
               alignment: AlignmentDirectional.center,
             )),
         child: Padding(
-          padding: EdgeInsets.only(top: 200),
+          padding: const EdgeInsets.only(top: 200),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
@@ -28,12 +28,7 @@ class PhoneConfirmationPage extends StatelessWidget {
                     decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(10)),
-                    child: ConfirmPhoneForm(
-                      onSubmit: ({required String code}) async {
-
-                      },
-                      onResend: () => print('resend'),
-                    ),
+                    child: const ConfirmPhoneForm(),
                   )),
             ],
           ),

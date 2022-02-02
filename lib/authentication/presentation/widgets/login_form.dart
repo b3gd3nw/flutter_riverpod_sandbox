@@ -13,7 +13,7 @@ import 'package:reactive_forms/reactive_forms.dart';
 import '../../../global_providers.dart';
 
 final signInPhoneModelProvider =
-    StateNotifierProvider.autoDispose<SignInPhone, SignInState>((ref) {
+    StateNotifierProvider.autoDispose<SignInPhone, PhoneSignInState>((ref) {
   final authService = ref.watch(authServiceProvider);
   return SignInPhone(
     authService: authService,
@@ -25,19 +25,17 @@ class LoginForm extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    MaskTextInputFormatter maskFormatter = MaskTextInputFormatter(
-      mask: ' ###-##-###-#',
-      filter: {"#": RegExp(r'[0-9]')},
-    );
-    final form = ref.watch(formProvider);
-    final state = ref.watch(signInPhoneModelProvider);
+    ref.listen(signInPhoneModelProvider, (previous, state) {
+      if (state is PhoneSignInNotifierStateVerificationFailed) {
+        ShowFlash(context: context, message: state.errorMessage).showBasicFlash();
+      } else if (state is PhoneSignInNotifierStateVerificationSuccess) {
+        Navigator.pushNamed(context, '/confirm_phone');
+      }
+    });
+    final mask = ref.watch(maskProvider);
+    final form = ref.watch(phoneFormProvider);
     final auth = ref.read(signInPhoneModelProvider.notifier);
-    if (state != SignInState.loading() && state != SignInState.success() && state != SignInState.notValid()) {
-      Future.delayed(Duration.zero, () {
-        ShowFlash(context: context, message: state.toString()).showBasicFlash();
-      });
-      print(state.toString());
-    }
+    
     return ReactiveForm(
       formGroup: form,
       child: Column(
@@ -79,7 +77,7 @@ class LoginForm extends ConsumerWidget {
                   padding: const EdgeInsets.only(top: 10),
                   child: ReactiveTextField(
                     textAlignVertical: TextAlignVertical.top,
-                    inputFormatters: [maskFormatter],
+                    inputFormatters: [mask],
                     formControlName: 'phone',
                     textAlign: TextAlign.start,
                     keyboardType: TextInputType.phone,
@@ -105,7 +103,8 @@ class LoginForm extends ConsumerWidget {
           ) {
             return SubmitButton(
               onPress: () {
-                auth.verifyPhone(form.control('phone').value);
+                // auth.verifyPhone(form.control('phone').value);
+                auth.verifyPhone('+12345678900');
                 // ShowFlash(context: context, message: 'test').showBasicFlash();
 
               },

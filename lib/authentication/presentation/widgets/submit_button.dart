@@ -35,7 +35,7 @@ class SubmitButton extends ConsumerWidget {
           primary: Colors.greenAccent,
         ),
         onPressed: form1!.valid ? onPress : null,
-        child: (state == const SignInState.loading())
+        child: (state is PhoneSignInNotifierStateVerification)
             ? const LinearProgressIndicator(
                 color: Colors.white,
                 backgroundColor: Colors.greenAccent,

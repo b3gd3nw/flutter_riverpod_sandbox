@@ -1,4 +1,4 @@
-#Tue Feb 01 23:49:53 EET 2022
-base.0=D\:\\Dev\\projects\\flutter_riverpod_sandbox\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
+#Wed Feb 02 12:21:34 EET 2022
+base.0=/Users/user/StudioProjects/freshcode_loyalty_t3/build/app/intermediates/dex/debug/mergeDexDebug/classes.dex
 renamed.0=classes.dex
 path.0=classes.dex

@@ -1,17 +1,17 @@
 {
     "logs": [
         {
-            "outputFile": "D:\\Dev\\projects\\flutter_riverpod_sandbox\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-night-v8\\values-night-v8.xml",
+            "outputFile": "/Users/user/StudioProjects/freshcode_loyalty_t3/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-night-v8/values-night-v8.xml",
             "map": [
                 {
-                    "source": "D:\\Dev\\projects\\flutter_riverpod_sandbox\\android\\app\\src\\main\\res\\values-night\\styles.xml",
+                    "source": "/Users/user/StudioProjects/freshcode_loyalty_t3/android/app/src/main/res/values-night/styles.xml",
                     "from": {
                         "startLines": "3,14",
                         "startColumns": "4,4",
-                        "startOffsets": "175,820",
+                        "startOffsets": "172,806",
                         "endLines": "7,16",
                         "endColumns": "12,12",
-                        "endOffsets": "471,986"
+                        "endOffsets": "464,970"
                     },
                     "to": {
                         "startLines": "2,7",

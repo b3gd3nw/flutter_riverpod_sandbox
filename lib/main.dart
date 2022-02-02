@@ -3,6 +3,8 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flash/flash.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:freshcode_loyalty_t3/authentication/presentation/pages/phone_confirmation_page.dart';
+import 'package:freshcode_loyalty_t3/authentication/presentation/pages/phone_verification_page.dart';
 import 'authentication/presentation/pages/auth_checker.dart';
 import 'locales.dart';
 
@@ -80,13 +82,12 @@ class MyApp extends ConsumerWidget {
         bottomSheetTheme:
             const BottomSheetThemeData(backgroundColor: Colors.transparent),
       ),
-      home: const AuthChecker(),
-      // initialRoute: '/confirm_phone',
-      // routes: {
-      //   '/': (context) => const PhoneVerificationPage(),
-      //   '/confirm_phone': (context) => const PhoneConfirmationPage(),
-      //   '/test': (context) => const Test()
-      // },
+      initialRoute: '/',
+      routes: {
+        '/': (context) => const AuthChecker(),
+        '/verify_phone': (context) => const PhoneVerificationPage(),
+        '/confirm_phone': (context) => const PhoneConfirmationPage()
+      },
     );
   }
 }
