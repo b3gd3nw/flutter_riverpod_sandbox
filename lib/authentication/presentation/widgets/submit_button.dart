@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:formz/formz.dart';
-import 'package:freshcode_loyalty_t3/authentication/presentation/widgets/phone_input.dart';
+import 'package:freshcode_loyalty_t3/authentication/domain/state/sign_in_state.dart';
 import 'package:freshcode_loyalty_t3/text_config.dart';
 import 'package:reactive_forms/reactive_forms.dart';
+
+import 'login_form.dart';
 
 typedef OnPressCallback = Function();
 
@@ -11,12 +12,17 @@ class SubmitButton extends ConsumerWidget {
   final FormGroup form;
   final OnPressCallback? onPress;
   final String title;
-  const SubmitButton({Key? key, required this.onPress, required this.title, required this.form})
+  const SubmitButton(
+      {Key? key,
+      required this.onPress,
+      required this.title,
+      required this.form})
       : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final form1 = ReactiveForm.of(context);
+    final state = ref.watch(signInPhoneModelProvider);
     return SizedBox(
       width: 400,
       child: ElevatedButton(
@@ -29,7 +35,12 @@ class SubmitButton extends ConsumerWidget {
           primary: Colors.greenAccent,
         ),
         onPressed: form1!.valid ? onPress : null,
-        child: Text(TextConfig.logIn),
+        child: (state == const SignInState.loading())
+            ? const LinearProgressIndicator(
+                color: Colors.white,
+                backgroundColor: Colors.greenAccent,
+              )
+            : Text(TextConfig.logIn),
       ),
     );
   }

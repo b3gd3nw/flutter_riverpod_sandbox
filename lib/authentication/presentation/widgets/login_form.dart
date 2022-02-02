@@ -32,8 +32,10 @@ class LoginForm extends ConsumerWidget {
     final form = ref.watch(formProvider);
     final state = ref.watch(signInPhoneModelProvider);
     final auth = ref.read(signInPhoneModelProvider.notifier);
-    if (state != SignInState.loading() || state != SignInState.success()) {
-      ShowFlash(context: context, message: 'test').showBasicFlash();
+    if (state != SignInState.loading() && state != SignInState.success() && state != SignInState.notValid()) {
+      Future.delayed(Duration.zero, () {
+        ShowFlash(context: context, message: state.toString()).showBasicFlash();
+      });
       print(state.toString());
     }
     return ReactiveForm(
@@ -103,7 +105,8 @@ class LoginForm extends ConsumerWidget {
           ) {
             return SubmitButton(
               onPress: () {
-                // auth.verifyPhone(form.control('phone').value);
+                auth.verifyPhone(form.control('phone').value);
+                // ShowFlash(context: context, message: 'test').showBasicFlash();
 
               },
               title: TextConfig.logIn,

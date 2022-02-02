@@ -1,5 +1,6 @@
 import 'package:flash/flash.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 class ShowFlash {
   final BuildContext context;
@@ -10,15 +11,33 @@ class ShowFlash {
   void showBasicFlash() {
     showFlash(
       context: context,
-      duration: Duration(seconds: 3),
+      duration: const Duration(seconds: 5),
       builder: (_, controller) {
-        return Flash(
+        return Flash.bar(
           controller: controller,
+          position: FlashPosition.top,
+          brightness: Brightness.light,
+          borderWidth: 2.5,
+          backgroundColor: Colors.white,
+          margin: const EdgeInsets.all(8),
+          borderRadius: const BorderRadius.all(Radius.circular(25)),
+          borderColor: Colors.red,
           behavior: FlashBehavior.floating,
-          position: FlashPosition.bottom,
+          forwardAnimationCurve: Curves.elasticOut,
+          reverseAnimationCurve: Curves.slowMiddle,
           horizontalDismissDirection: HorizontalDismissDirection.horizontal,
           child: FlashBar(
-            content: Text(message),
+            icon: const Icon(
+              Icons.error,
+              color: Colors.red,
+            ),
+            content: Text(
+              message,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+              ),
+            ),
           ),
         );
       },

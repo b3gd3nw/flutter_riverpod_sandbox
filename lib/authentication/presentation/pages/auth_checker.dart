@@ -16,7 +16,13 @@ class AuthChecker extends ConsumerWidget {
     return _authState.when(
         data: (data) {
           if (data != null) return const PartnersPage();
-          return const PhoneVerificationPage();
+          return Overlay(
+            initialEntries: [
+              OverlayEntry(
+                builder: (context) => const PhoneVerificationPage(),
+              ),
+            ],
+          );
         },
         loading: () => const LoadingScreen(),
         error: (e, trace) => ErrorPage(errorMessage: e.toString()));

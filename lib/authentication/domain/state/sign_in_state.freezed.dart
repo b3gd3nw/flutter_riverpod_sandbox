@@ -640,7 +640,7 @@ class _$_Error implements _Error {
 
   @override
   String toString() {
-    return 'SignInState.error(errorText: $errorText)';
+    return '$errorText';
   }
 
   @override
